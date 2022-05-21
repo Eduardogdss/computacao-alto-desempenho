@@ -13,30 +13,30 @@ char *lower(char *string)
     return string;
 }
 
-double get_random_value(int size)
+double gen_random(int size)
 {
     return rand() % size + 1;
 }
 
-double *instantiate_vector(int vector_size)
+double *vector_instance(int vector_size)
 {
     return (double *)malloc((vector_size + 1) * sizeof(double));
 }
 
 double *zero_vector(int vector_size)
 {
-    double *vector = instantiate_vector(vector_size);
+    double *vector = vector_instance(vector_size);
     for (int i = 0; i <= vector_size; i++)
         vector[i] = 0;
 
     return vector;
 }
 
-double *generate_random_vector(int vector_size)
+double *gen_random_vec(int vector_size)
 {
-    double *vector = instantiate_vector(vector_size);
+    double *vector = vector_instance(vector_size);
     for (int i = 0; i <= vector_size; i++)
-        vector[i] = get_random_value(vector_size);
+        vector[i] = gen_random(vector_size);
 
     return vector;
 }
@@ -45,7 +45,7 @@ double **instantiate_matrix(int matrix_size)
 {
     double **matrix = (double **)malloc((matrix_size + 1) * sizeof(double *));
     for (int i = 0; i <= matrix_size; i++)
-        matrix[i] = instantiate_vector(matrix_size);
+        matrix[i] = vector_instance(matrix_size);
 
     return matrix;
 }
@@ -53,7 +53,7 @@ double **instantiate_matrix(int matrix_size)
 void fill_matrix_line(int current_line, int matrix_size, double **matrix)
 {
     for (int j = 0; j <= matrix_size; j++)
-        matrix[current_line][j] = get_random_value(matrix_size);
+        matrix[current_line][j] = gen_random(matrix_size);
 }
 
 double **generate_random_matrix(int matrix_size)
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
     srand(time(NULL));
 
     double **matrix = generate_random_matrix(size);
-    double *vector = generate_random_vector(size);
+    double *vector = gen_random_vec(size);
 
     if (type_of_function == 1)
     {

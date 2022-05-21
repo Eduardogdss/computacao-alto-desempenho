@@ -1,3 +1,2 @@
-os scripts utilizados para gerar o arquivo executável são:
-`gcc c_files/matrix.c -o c_matrix`
-`gfortran fortran_files/matrix.f95 -o fortran_matrix`
+Crie uma pasta 'time_files' com duas subpastas 'C' e 'Fortran', cada uma com dois arquivos csv i_externo.csv e j_externo.csv .
+Após isso execute o script.sh
